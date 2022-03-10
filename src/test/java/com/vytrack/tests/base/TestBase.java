@@ -12,8 +12,8 @@ public class TestBase {
         Driver.getDriver().get(ConfigurationReader.getProperty("env1"));
         System.out.println("Test is started");
     }
-    @AfterMethod
-    public void tearDown(){
-        Driver.closeDriver();
-    }
+//    @AfterMethod
+//    public void tearDown(){
+//        Driver.closeDriver();
+//    }
 }
