@@ -21,18 +21,18 @@ public class BrowserUtils {
     }
 
 
-    public static void switchWindowAndVerify(WebDriver driver, String expectedInUrl, String expectedInTitle){
+    public static void switchWindowAndVerify( String expectedInUrl, String expectedInTitle){
 
-        Set<String> allWindowsHandles = driver.getWindowHandles();
+        Set<String> allWindowsHandles = Driver.getDriver().getWindowHandles();
         for (String each : allWindowsHandles) {
-            driver.switchTo().window(each);
-            System.out.println("Current URL: "+ driver.getCurrentUrl());
-            if(driver.getCurrentUrl().contains(expectedInUrl)){
+            Driver.getDriver().switchTo().window(each);
+            System.out.println("Current URL: "+ Driver.getDriver().getCurrentUrl());
+            if(Driver.getDriver().getCurrentUrl().contains(expectedInUrl)){
                 break;
             }
         }
 //        5. Assert: Title contains “expectedInTitle”
-        String actualTitle = driver.getTitle();
+        String actualTitle = Driver.getDriver().getTitle();
         Assert.assertTrue(actualTitle.contains(expectedInTitle));
 
     }
@@ -40,7 +40,7 @@ public class BrowserUtils {
     /*
     This method accepts a String "expectedTitle" and Asserts if it is true
      */
-    public static void verifyTitle(WebDriver driver, String expectedTitle){
-        Assert.assertEquals(driver.getTitle(),expectedTitle);
+    public static void verifyTitle( String expectedTitle){
+        Assert.assertEquals(Driver.getDriver().getTitle(),expectedTitle);
     }
 }
